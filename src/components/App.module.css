@@ -1,12 +1,31 @@
 .app {
-    width: 100%;
+    width: 25%;
     height: 100vh;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 40px;
-    font-size: 40px;
+    gap: 20px;
     color: #010101;
     padding-top: 40px;
+}
+
+h1 {
+    margin: 0;
+    padding: 5px;
+    font-size: 40px;
+}
+
+h2 {
+    margin: 0;
+    padding: 5px;
+    font-size: 30px;
+}
+
+.contactsWrapper {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 }

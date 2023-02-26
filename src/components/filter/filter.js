@@ -1,12 +1,14 @@
 
 import css from '../filter/filter.module.css';
 
-const Filter = () => {
+const Filter = ({value, onChange}) => {
 
     return (
-        <label> Find contacts by name
-            <input type="text" />
-        </label>
+        <div className={css.filterWrapper}>
+        <label> <b>Find contacts by name</b>
+                <input type="text" value={value} onChange={onChange} className={css.filterInput } />
+            </label>
+        </div>
     )
 
 };

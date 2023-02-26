@@ -1,18 +1,31 @@
 
 .form {
     width: 100%;
+    height: 25%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-};
+    border: 1px solid rgb(51, 51, 51);
+}
 
 
-.formLabel {
+label {
     font-size: 20px;
 }
 
-.submitBtn {
-    cursor: pointer;
+input {
+    display: block;
+    width: 200px;
+    height: 20px;
+    bottom: 0.5px solid rgb(51, 51, 51);;
+    outline: transparent;
+    font-size: 14px;
+}
+
+input:focus {
+    transform: scale(1.2);
 }
