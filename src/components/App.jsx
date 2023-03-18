@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 
 import css from './App.module.css';
@@ -16,9 +16,9 @@ export class App extends Component {
     filter: '',
   };
 
-  getRepeatingName = (name) => {
-   return this.state.contacts.find(contact => contact.name === name)
-  }
+  getRepeatingName = name => {
+    return this.state.contacts.find(contact => contact.name === name);
+  };
 
   addContact = ({ name, number }) => {
     const contact = {
@@ -26,55 +26,56 @@ export class App extends Component {
       name,
       number,
     };
-    
+
     const repeatingName = this.getRepeatingName(name);
     if (repeatingName) {
-      return alert(`${name} is already in contacts`)      
+      return alert(`${name} is already in contacts`);
     }
     this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts]
-    }))
+      contacts: [contact, ...contacts],
+    }));
   };
 
   changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value })
+    this.setState({ filter: e.currentTarget.value });
   };
 
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalazedContact = filter.toLowerCase();
-    return contacts.filter(contact => contact.name.toLowerCase().includes(normalazedContact));
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalazedContact)
+    );
   };
 
-  deleteContact = (contactId) => {
+  deleteContact = contactId => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId)
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  
-  render() {
 
+  render() {
     const totalQuantity = this.state.contacts.length;
     const visibleContacts = this.getVisibleContacts();
     return (
-     <div className={css.app}>
-  <h1>Phonebook</h1>
+      <div className={css.app}>
+        <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
-        {totalQuantity !== 0 ?
+        {totalQuantity !== 0 ? (
           <div className={css.contactsWrapper}>
             <h2>Contacts</h2>
             <p>Total quantity of your contacts: {totalQuantity}</p>
-        <Filter value={this.state.filter} onChange={this.changeFilter} />
-            <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} />
+            <Filter value={this.state.filter} onChange={this.changeFilter} />
+            <ContactList
+              contacts={visibleContacts}
+              onDeleteContact={this.deleteContact}
+            />
           </div>
-          :
+        ) : (
           <p>Your contacts will be here</p>
-        }
-        
-</div>
-   ) 
-  };
-    
-  
-};
+        )}
+      </div>
+    );
+  }
+}
